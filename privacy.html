@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Orb's privacy policy. Orb collects no data: it ships without the network entitlement, so macOS refuses to let it reach the internet at all.">
+<link rel="canonical" href="https://t27.ai/orb/privacy/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Orb — Privacy Policy">
+<meta property="og:description" content="Orb collects no data. It ships without the network entitlement, so macOS refuses to let it reach the internet at all.">
+<meta property="og:url" content="https://t27.ai/orb/privacy/">
+<meta name="twitter:card" content="summary">
+<!-- Served from gHashTag/orb. The application source is private in gHashTag/orb-app. -->
+<title>Orb — Privacy Policy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+  /* Same tokens as the product page, light first and complete. */
+  :root {
+    --ground: #F5F3FB;
+    --surface: #FFFFFF;
+    --surface-2: #ECE8F8;
+    --line: #DED7F0;
+    --ink: #14112A;
+    --ink-dim: #3B3557;
+    --muted: #625C82;
+    --violet: #6B3FF2;
+    --shadow: 0 24px 60px -28px rgba(30, 18, 80, .38);
+    --sphere-core: #C4B3FF;
+    --sphere-mid: #7B54F5;
+    --sphere-deep: #2A1470;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #090811;
+      --surface: #12101F;
+      --surface-2: #1A1630;
+      --line: #2C2545;
+      --ink: #F0EDF9;
+      --ink-dim: #C6BFE0;
+      --muted: #A099C2;
+      --violet: #9B7BFF;
+      --shadow: 0 30px 70px -30px rgba(0, 0, 0, .8);
+      --sphere-core: #D5C7FF;
+      --sphere-mid: #8B67FF;
+      --sphere-deep: #1B0C52;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #090811;
+    --surface: #12101F;
+    --surface-2: #1A1630;
+    --line: #2C2545;
+    --ink: #F0EDF9;
+    --ink-dim: #C6BFE0;
+    --muted: #A099C2;
+    --violet: #9B7BFF;
+    --shadow: 0 30px 70px -30px rgba(0, 0, 0, .8);
+    --sphere-core: #D5C7FF;
+    --sphere-mid: #8B67FF;
+    --sphere-deep: #1B0C52;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+  }
+
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 28px 24px 80px;
+  }
+
+  h1, h2 {
+    font-family: Fraunces, Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .masthead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 64px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .orb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 32% 28%, var(--sphere-core), var(--sphere-mid) 52%, var(--sphere-deep) 100%);
+    box-shadow: 0 0 0 1px rgba(255,255,255,.22) inset, 0 6px 18px -8px var(--sphere-mid);
+  }
+
+  .back {
+    font-size: .88rem;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+  }
+  .back:hover { color: var(--violet); border-color: currentColor; }
+
+  h1 { font-size: clamp(2rem, 5vw, 2.8rem); margin-bottom: 12px; }
+
+  .effective {
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: .82rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+
+  .summary {
+    margin: 32px 0 48px;
+    padding: 24px 26px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    font-size: 1.08rem;
+    color: var(--ink-dim);
+  }
+  .summary b { color: var(--ink); font-weight: 600; }
+
+  section { margin-bottom: 40px; }
+  h2 { font-size: 1.35rem; margin-bottom: 12px; }
+  p { margin: 0 0 14px; color: var(--ink-dim); }
+  p:last-child { margin-bottom: 0; }
+
+  ul { margin: 0 0 14px; padding-left: 1.1rem; color: var(--ink-dim); }
+  li { margin-bottom: 8px; }
+
+  code {
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: .88em;
+    background: var(--surface-2);
+    border-radius: 6px;
+    padding: 1px 6px;
+  }
+
+  a { color: var(--violet); }
+
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    justify-content: space-between;
+    font-size: .86rem;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="masthead">
+    <a class="brand" href="/orb/"><span class="orb"></span>Orb</a>
+    <a class="back" href="/orb/">Back to Orb</a>
+  </header>
+
+  <h1>Privacy Policy</h1>
+  <div class="effective">Effective 8 September 2026</div>
+
+  <div class="summary">
+    <b>Orb collects nothing.</b> There is no account, no analytics and no telemetry.
+    Your recordings never leave your Mac, because the app is not able to send them
+    anywhere: it ships without the network entitlement, and macOS refuses outbound
+    connections to a sandboxed app that does not declare one.
+  </div>
+
+  <section>
+    <h2>What Orb handles</h2>
+    <p>
+      Orb records your screen, your camera and your microphone, and it writes what it
+      records to your own disk — by default to <code>~/Movies/Orb</code>. Projects and
+      exported videos are ordinary files that belong to you. Deleting them deletes them;
+      there is no copy elsewhere.
+    </p>
+    <p>
+      Orb also reads the position of your pointer while a recording is running, so it can
+      zoom toward what you click. Those coordinates are stored inside the recording's own
+      project file and are used for nothing else.
+    </p>
+  </section>
+
+  <section>
+    <h2>Permissions are not collection</h2>
+    <p>
+      macOS asks you to grant Orb access to the camera, the microphone and screen
+      recording. Those grants let the app see that material on your machine. They do not
+      send it anywhere, and this policy makes no exception that would let it.
+    </p>
+    <p>
+      You can withdraw any of them at any time in System Settings → Privacy &amp;
+      Security. Orb keeps working with whatever remains.
+    </p>
+  </section>
+
+  <section>
+    <h2>No network access at all</h2>
+    <p>
+      This is worth stating precisely, because it is checkable rather than promised. The
+      shipped application declares exactly four entitlements: the App Sandbox, camera,
+      microphone, and read-write access to your Movies folder. It declares neither
+      <code>com.apple.security.network.client</code> nor
+      <code>com.apple.security.network.server</code>. Under the sandbox that is not a
+      policy we follow — it is a capability the operating system withholds.
+    </p>
+    <p>
+      You can verify it yourself on the copy you downloaded:
+      <code>codesign -d --entitlements - /Applications/Orb.app</code>.
+    </p>
+  </section>
+
+  <section>
+    <h2>No tracking, no third parties</h2>
+    <p>
+      Orb contains no advertising identifiers, no analytics SDKs, no crash reporters and
+      no third-party libraries that phone home. Nothing about you is shared with anyone,
+      because nothing about you is gathered in the first place.
+    </p>
+  </section>
+
+  <section>
+    <h2>Buying Orb</h2>
+    <p>
+      If you buy Orb from the Mac App Store, Apple processes the purchase and applies its
+      own privacy policy to it. If you buy it from this site, the payment processor does.
+      In both cases they handle the payment; we never receive or store your card details.
+    </p>
+  </section>
+
+  <section>
+    <h2>Children</h2>
+    <p>
+      Orb is rated 4+ and is safe for any age, for the same reason as everything above: it
+      gathers no information from anyone, children included.
+    </p>
+  </section>
+
+  <section>
+    <h2>Changes</h2>
+    <p>
+      If this policy ever changes, the new version appears on this page with a new
+      effective date. A change that started collecting something would be announced in the
+      app's release notes as well, not only here.
+    </p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>
+      Questions about this policy, or about anything in it you would like to verify:
+      <a href="mailto:admin@t27.ai">admin@t27.ai</a>.
+    </p>
+  </section>
+
+  <footer>
+    <span>Orb — screen recordings that keep their bubble editable.</span>
+    <span>macOS 14+ · one-time licence</span>
+  </footer>
+
+</div>
+</body>
+</html>

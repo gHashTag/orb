@@ -12,6 +12,7 @@ on:
     branches: [main]
     paths:
       - 'landing.html'
+      - 'privacy.html'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -38,6 +39,7 @@ jobs:
           # A truncated source would otherwise deploy a blank page over a working
           # one, and nobody would find out until they visited.
           test -s landing.html
+          test -s privacy.html
           grep -q '<title>' landing.html
           grep -q 'data-halo="glass"' landing.html
           grep -q 'mailto:admin@t27.ai' landing.html
@@ -46,9 +48,16 @@ jobs:
           grep -qi '<!doctype html>' landing.html
           grep -q 'rel="canonical"' landing.html
           grep -q 'og:title' landing.html
-          mkdir -p _site
+          # The App Store listing points at /orb/privacy/, and a policy URL that
+          # 404s blocks the submission. Checked here so a broken deploy cannot
+          # take the page out from under a live listing.
+          grep -q 'rel="canonical" href="https://t27.ai/orb/privacy/"' privacy.html
+          grep -q 'mailto:admin@t27.ai' privacy.html
+          mkdir -p _site _site/privacy
           cp landing.html _site/index.html
-          echo "publishing $(wc -c < _site/index.html) bytes"
+          cp privacy.html _site/privacy/index.html
+          test -s _site/privacy/index.html
+          echo "publishing $(wc -c < _site/index.html) bytes + $(wc -c < _site/privacy/index.html) bytes of policy"
 
       - uses: actions/upload-pages-artifact@v3
         with:
