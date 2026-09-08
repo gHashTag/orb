@@ -1,0 +1,60 @@
+name: Deploy the product page
+
+# One static file, no build step, so Pages is enough to host it. Served at
+# t27.ai/orb/ — a project site inheriting the custom domain from the user site that
+# owns the CNAME, the same way t27.ai/leela/ works.
+#
+# The artifact is assembled in the job rather than served from the repository root,
+# so what deploys is exactly what this job checked.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'landing.html'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deployment at a time, queued rather than cancelled: a half-finished deploy
+# would leave a page people are being sent to in a broken state.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Assemble and check the site
+        run: |
+          set -euo pipefail
+          # A truncated source would otherwise deploy a blank page over a working
+          # one, and nobody would find out until they visited.
+          test -s landing.html
+          grep -q '<title>' landing.html
+          grep -q 'data-halo="glass"' landing.html
+          grep -q 'mailto:admin@t27.ai' landing.html
+          mkdir -p _site
+          cp landing.html _site/index.html
+          echo "publishing $(wc -c < _site/index.html) bytes"
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
