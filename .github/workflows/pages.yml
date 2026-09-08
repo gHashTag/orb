@@ -41,6 +41,11 @@ jobs:
           grep -q '<title>' landing.html
           grep -q 'data-halo="glass"' landing.html
           grep -q 'mailto:admin@t27.ai' landing.html
+          # This file used to be wrapped by another generator. Now nothing wraps
+          # it, so the shell and the canonical have to be its own.
+          grep -qi '<!doctype html>' landing.html
+          grep -q 'rel="canonical"' landing.html
+          grep -q 'og:title' landing.html
           mkdir -p _site
           cp landing.html _site/index.html
           echo "publishing $(wc -c < _site/index.html) bytes"
